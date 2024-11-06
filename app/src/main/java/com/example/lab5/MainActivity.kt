@@ -8,6 +8,7 @@ import android.widget.RadioButton
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Currency
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         saleSlider = findViewById(R.id.saleValSlider)
         saleText = findViewById(R.id.saleValueText)
+        costValue = findViewById(R.id.costInputDecimal)
         usdCheck = findViewById(R.id.usdRadioButton)
         eurCheck = findViewById(R.id.euroRadioButton)
         pndCheck = findViewById(R.id.poundRadioButton)
@@ -58,28 +60,34 @@ class MainActivity : AppCompatActivity() {
         okButton.setOnClickListener() {
             var currency : Int = 1
             var currencyName : String = "Default"
-            var baseCost = costValue.text.toString().toDouble()
 
-            if (usdCheck.isChecked) {
-                currency = 93
-                currencyName = "Доллар"
-            }
-            if (eurCheck.isChecked) {
-                currency = 105
-                currencyName = "Евро"
-            }
-            if (pndCheck.isChecked) {
-                currency = 126
-                currencyName = "Фунт"
-            }
+            try {
+                val baseCost = costValue.text.toString().toDouble()
 
-            val finalCost = baseCost * currency * (1 - (saleSlider.progress/100))
+                if (usdCheck.isChecked) {
+                    currency = 93
+                    currencyName = "Доллар"
+                }
+                if (eurCheck.isChecked) {
+                    currency = 105
+                    currencyName = "Евро"
+                }
+                if (pndCheck.isChecked) {
+                    currency = 126
+                    currencyName = "Фунт"
+                }
 
-            val intent = Intent(this, ResultActivity::class.java).apply {
-                putExtra("FINAL_COAST", finalCost)
-                putExtra("CURRENCY_NAME", currencyName)
+                val finalCost = (baseCost/currency) * (1 - (saleSlider.progress/100))
+
+                val intent = Intent(this, ResultActivity::class.java).apply {
+                    putExtra("FINAL_COST", finalCost)
+                    putExtra("CURRENCY_NAME", currencyName)
+                }
+                startActivity (intent)
             }
-            startActivity (intent)
+            catch (e : Exception) {
+                Toast.makeText(this, "Не указана цена", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
