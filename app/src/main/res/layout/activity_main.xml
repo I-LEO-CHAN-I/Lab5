@@ -23,9 +23,11 @@
         app:layout_constraintVertical_bias="0.099" />
 
     <SeekBar
-        android:id="@+id/saleVal"
+        android:id="@+id/saleValSlider"
         android:layout_width="301dp"
         android:layout_height="29dp"
+        android:min="0"
+        android:max="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +35,7 @@
         app:layout_constraintVertical_bias="0.264" />
 
     <TextView
-        android:id="@+id/saleTitle"
+        android:id="@+id/saleTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Процент скидки"
@@ -45,7 +47,7 @@
         app:layout_constraintVertical_bias="0.225" />
 
     <TextView
-        android:id="@+id/costTitle"
+        android:id="@+id/costTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Цена"
@@ -57,7 +59,7 @@
         app:layout_constraintVertical_bias="0.056" />
 
     <TextView
-        android:id="@+id/currencyTitle"
+        android:id="@+id/currencyTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Валюта"
@@ -69,7 +71,7 @@
         app:layout_constraintVertical_bias="0.375" />
 
     <TextView
-        android:id="@+id/saleValue"
+        android:id="@+id/saleValueText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0%"
