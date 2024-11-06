@@ -62,15 +62,15 @@ class MainActivity : AppCompatActivity() {
 
             if (usdCheck.isChecked) {
                 currency = 93
-                currencyName = "долларах"
+                currencyName = "Доллар"
             }
             if (eurCheck.isChecked) {
                 currency = 105
-                currencyName = "евро"
+                currencyName = "Евро"
             }
             if (pndCheck.isChecked) {
                 currency = 126
-                currencyName = "фунтах"
+                currencyName = "Фунт"
             }
 
             val finalCost = baseCost * currency * (1 - (saleSlider.progress/100))
