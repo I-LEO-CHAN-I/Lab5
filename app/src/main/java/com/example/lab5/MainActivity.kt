@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     currencyName = "Фунт"
                 }
 
-                val finalCost = (baseCost/currency) * (1 - (saleSlider.progress/100))
+                val finalCost = (baseCost/currency) * (1 - (saleSlider.progress/100.0))
 
                 val intent = Intent(this, ResultActivity::class.java).apply {
                     putExtra("FINAL_COST", finalCost)
